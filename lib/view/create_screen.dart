@@ -41,7 +41,7 @@ class _CreateScreen extends State<CreateScreen> {
     return Form(
         key: _formKey,
         child: Padding(
-          padding: EdgeInsets.all(0),
+          padding: EdgeInsets.all(21),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
@@ -52,13 +52,9 @@ class _CreateScreen extends State<CreateScreen> {
                 ),
                 controller:
                     TextEditingController(text: '${persona.getNombres}'),
-                validator: (value) {
-                  this.nombres = value;
-                  if (value.isEmpty) {
-                    return 'Porfavor ingresa tus nombres';
-                  }
-                  return null;
-                },
+                validator: (value) =>
+                    value.isEmpty ? 'Porfavor ingresa tus nombres' : null,
+                onSaved: (value) => this.nombres = value,
               ),
               TextFormField(
                 style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20),
@@ -67,13 +63,9 @@ class _CreateScreen extends State<CreateScreen> {
                 ),
                 controller:
                     TextEditingController(text: '${persona.getApellidos}'),
-                validator: (value) {
-                  this.apellidos = value;
-                  if (value.isEmpty) {
-                    return 'Porfavor ingresa tus apellidos';
-                  }
-                  return null;
-                },
+                validator: (value) =>
+                    value.isEmpty ? 'Porfavor ingresa tus apellidos' : null,
+                onSaved: (value) => this.apellidos = value,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 1.0),
@@ -81,6 +73,7 @@ class _CreateScreen extends State<CreateScreen> {
                   onPressed: () {
                     Persona p = Persona();
                     if (_formKey.currentState.validate()) {
+                      _formKey.currentState.save();
                       p.setNombres = this.nombres;
                       p.setApellidos = this.apellidos;
                       if (persona.getID != -1)
