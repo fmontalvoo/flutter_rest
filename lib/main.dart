@@ -7,11 +7,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter REST',
+      title: 'Cliente REST',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeScreen(title: 'Flutter REST'),
+      home: HomeScreen(title: 'Cliente REST'),
     );
   }
 }

@@ -1,3 +1,9 @@
 {
-    "persona": {"codigo": 1, "nombre": "Frank Montalvo Ochoa"}
+  "persona": [
+    {
+      "id": 1,
+      "nombres": "Frank Gabriel",
+      "apellidos": "Montalvo Ochoa"
+    }
+  ]
 }
