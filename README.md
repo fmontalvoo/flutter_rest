@@ -33,11 +33,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter REST',
+      title: 'Cliente REST',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter REST'),
+      home: MyHomePage(title: 'Cliente REST'),
     );
   }
 }
@@ -85,16 +85,16 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class Persona {
-  int codigo;
+  int id;
   String nombre;
 
-  Persona({int codigo, String nombre}) {
-    this.codigo = codigo;
+  Persona({int id, String nombre}) {
+    this.id = id;
     this.nombre = nombre;
   }
 
   factory Persona.fromJson(Map<String, dynamic> json) {
-    return Persona(codigo: json['codigo'], nombre: json['nombre']);
+    return Persona(id: json['id'], nombre: json['nombre']);
   }
 }
 ```
@@ -105,7 +105,7 @@ Para iniciar el servidor ejecutar:  `json-server --host your_ip --watch db.json`
 
 ```js
 {
-    "persona": {"codigo": 1, "nombre": "Frank Montalvo Ochoa"}
+    "persona": {"id": 1, "nombre": "Frank Montalvo Ochoa"}
 }
 ```
 #### Aplicación ejecutándose en un emulador
