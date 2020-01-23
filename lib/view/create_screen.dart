@@ -20,7 +20,7 @@ class _CreateScreen extends State<CreateScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: Text('Crear/Modificar'),),
       body: _form(
           persona: widget.persona != null
               ? widget.persona
