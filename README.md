@@ -103,7 +103,7 @@ class Persona {
 
 Para iniciar el servidor ejecutar:  `json-server --host your_ip --watch db.json`
 
-```js
+```json
 {
     "persona": {"id": 1, "nombre": "Frank Montalvo Ochoa"}
 }

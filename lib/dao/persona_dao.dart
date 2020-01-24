@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_rest/model/persona.dart';
 
 class PersonaDAO {
-  static const String IP = '172.16.2.73';
+  static const String IP = '0.0.0.0';
   static const int PORT = 3000;
   static const String URL = 'http://$IP:$PORT/persona';
 
