@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
           child: FutureBuilder<Persona>(
-        future: fetchPost(),
+        future: leerPersona(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Text(snapshot.data.nombre);
@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Future<Persona> fetchPost() async {
+  Future<Persona> leerPersona() async {
     final response = await http.get('http://your_ip:3000/persona');
 
     if (response.statusCode == 200) {
