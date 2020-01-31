@@ -4,9 +4,13 @@ class Auth {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   Future<AuthResult> loginConEmailYClave(String email, String clave) async {
-    AuthResult user = await _firebaseAuth.signInWithEmailAndPassword(
-        email: email, password: clave);
-    return user;
+    try {
+      AuthResult user = await _firebaseAuth.signInWithEmailAndPassword(
+          email: email, password: clave);
+      return user;
+    } catch (e) {
+      return null;
+    }
   }
 
   Future<FirebaseUser> usuarioActual() async {

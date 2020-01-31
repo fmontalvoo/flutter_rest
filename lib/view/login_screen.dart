@@ -21,9 +21,9 @@ class _LoginScreen extends State<LoginScreen> {
     super.initState();
     widget.auth.usuarioActual().then((data) {
       setState(() {
-        if (data != null)
+        if (data != null) {
           this._logueado = true;
-        else
+        } else
           this._logueado = false;
       });
     });
@@ -67,13 +67,19 @@ class _LoginScreen extends State<LoginScreen> {
               ),
               RaisedButton(
                 child: Text('Login'),
-                onPressed: () {
+                onPressed: () async {
                   if (_formKey.currentState.validate()) {
                     _formKey.currentState.save();
-                    widget.auth.loginConEmailYClave(_email, _clave);
-                    setState(() {
-                      this._logueado = true;
-                    });
+                    var auth =
+                        await widget.auth.loginConEmailYClave(_email, _clave);
+                    if (auth != null) {
+                      setState(() {
+                        this._logueado = true;
+                      });
+                    } else {
+                      showMessage(context, "Error",
+                          "Usuario o contraseña incorrectos!!");
+                    }
                   }
                 },
               )
@@ -82,5 +88,24 @@ class _LoginScreen extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  showMessage(BuildContext context, String title, String description) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: new Text(title),
+            content: new Text(description),
+            actions: <Widget>[
+              new FlatButton(
+                child: new Text("Cerrar"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
   }
 }
